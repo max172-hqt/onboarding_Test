@@ -41,20 +41,15 @@ class SignupStep:
                 EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//body[@class='landing-expert']/div/iframe[1]"))
             )
 
-        except TimeoutException:
-            print("Loading took too much time!")
-
-        try:
             next_btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))
             )
 
             next_btn.click()
-            driver.switch_to.default_content()
 
+            driver.switch_to.default_content()
         except TimeoutException:
             print("Loading took too much time!")
-
 
     @staticmethod
     def _generate_email():

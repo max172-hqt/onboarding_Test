@@ -3,10 +3,12 @@ from selenium import webdriver
 from custom_config import Config
 from steps.signup import SignupStep
 from steps.onboarding import OnboardingStep
+from steps.question_pool import QuestionPool
 
 
 class TestRunner(unittest.TestCase):
     def setUp(self):
+        QuestionPool().update_all_tests()
         self.driver = webdriver.Firefox()
         self.signup_step = SignupStep(self.driver)
         self.onboarding_step = OnboardingStep(self.driver)
