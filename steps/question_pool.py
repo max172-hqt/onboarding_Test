@@ -55,9 +55,9 @@ class QuestionPool:
 
         for test_name in list_test_name:
             test = self.get_test_by_name(test_name)
-            self.__update_test(test)
+            self._update_test(test)
 
-    def __update_test(self, test):
+    def _update_test(self, test):
         """
         Update current test with mock pool
         -   Get the test object from API

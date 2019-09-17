@@ -40,6 +40,11 @@ class OnboardingStep:
             print("Take too much time")
 
     def _answer_policy_tests(self):
+        """
+        -   For each mini policy test
+        -   Watch video
+        -   Answer correctly
+        """
         for i in range(Config.NUM_MINI_POLICY_TESTS):
             self._watch_video()
             self._answer_questions()
