@@ -1,11 +1,10 @@
 import email
 import imaplib
-
-from common.config import config
+from custom_config import Config
 
 
 class GmailService:
-    mail_client = imaplib.IMAP4_SSL(config.GMAIL_SMTP_SERVER)
+    mail_client = imaplib.IMAP4_SSL(Config.GMAIL_SMTP_SERVER)
 
     def __init__(self, username, password):
         try:

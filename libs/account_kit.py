@@ -1,11 +1,14 @@
 import html
 import re
+from selenium import webdriver
 
 from selenium.webdriver.common.by import By
 
-from common.browser import get_driver
-from common.config import config
-from common.services.gmail import GmailService
+# from common.browser import get_driver
+# from common.config import config
+
+from custom_config import Config
+from libs.gmail import GmailService
 
 
 def _login_with_selenium(url):
@@ -14,7 +17,7 @@ def _login_with_selenium(url):
     :param url: the url to be opened
     :return:
     """
-    driver = get_driver()
+    driver = webdriver.Firefox()
 
     driver.get(url)
     login_button = None
@@ -50,7 +53,7 @@ def _login_account_kit(mail):
 
 
 def run():
-    gmail_service = GmailService(config.TEST_GOOGLE_EMAIL, config.TEST_GOOGLE_PASSWORD)
+    gmail_service = GmailService(Config.TEST_GOOGLE_EMAIL, Config.TEST_GOOGLE_PASSWORD)
     while True:
         mails = gmail_service.get_latest_unread_emails(sender="Account Kit")
         for mail in mails:
