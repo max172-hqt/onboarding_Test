@@ -28,6 +28,9 @@ class OnboardingStep:
 
             start_btn_onboarding.click()
             self._answer_policy_tests()
+            self._excel_test_failed_attempt()
+            print("after fail")
+            self._excel_test_passed_attempt()
 
         except TimeoutException:
             print("Take too much time")
@@ -38,13 +41,16 @@ class OnboardingStep:
             self._answer_questions()
 
     def _watch_video(self):
+        """
+        Wait for Continue button to be clickable
+        """
         continue_video_btn = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, ".expert-onboarding-background-video + .btn"))
         )
 
         continue_video_btn.click()
 
-    def _answer_questions(self):
+    def _answer_questions(self, answer_correct=True):
         """
         -   Get number of questions
         -   Wait question loading
@@ -52,7 +58,11 @@ class OnboardingStep:
         -   Wait success page and continue
         """
         driver = self.driver
-        by_first_answer_css = ".expert-onboarding-answers li:first-child input"
+
+        if answer_correct:
+            by_answer_css = ".expert-onboarding-answers li:first-child input"
+        else:
+            by_answer_css = ".expert-onboarding-answers li:nth-child(2) input"
 
         progress_text = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "#onboarding-test-question-progress span"))
@@ -63,7 +73,7 @@ class OnboardingStep:
 
         for i in range(question_num):
             first_answer = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, by_first_answer_css))
+                EC.element_to_be_clickable((By.CSS_SELECTOR, by_answer_css))
             )
             first_answer.click()
 
@@ -72,7 +82,43 @@ class OnboardingStep:
             )
             continue_btn.click()
 
-        continue_pass_btn = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "#onboarding-test-passed-screen button"))
+        if answer_correct:
+            continue_pass_btn = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "#onboarding-test-passed-screen button"))
+            )
+            continue_pass_btn.click()
+
+    def _excel_test_failed_attempt(self):
+        """
+        -   On Subject page
+        -   Take Excel Core test
+        -   Choose second answer
+        -   Fail test
+        """
+        driver = self.driver
+
+        start_excel_btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//h3[text()='Excel']/parent::div//a"))
         )
-        continue_pass_btn.click()
+
+        start_excel_btn.click()
+        self._answer_questions(False)
+
+    def _excel_test_passed_attempt(self):
+        """
+        -   Click Retry on failed page
+        -   Answer correct
+        """
+        driver = self.driver
+
+        print("here")
+        retry_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-danger.btn-onboarding"))
+        )
+        print("there")
+        retry_button.click()
+        # start_excel_btn = WebDriverWait(driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//h3[text()='Excel']/parent::div//a"))
+        # )
+
+        self._answer_questions()

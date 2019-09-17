@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="decea561-695c-45c6-b2c4-f0f540563a2a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/hqt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/account_kit.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/account_kit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/gmail.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gmail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/custom_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/question-pool.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/question_pool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/libs/geckodriver.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steps/onboarding.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/onboarding.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_runner.TestRunner.test_on_boarding_flow">
+  <component name="RunManager" selected="Python tests.Unittests for test_runner.TestRunner">
     <configuration name="custom_config" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="onboarding-test" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,9 +144,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_runner.TestRunner.test_on_boarding_flow" />
         <item itemvalue="Python tests.Unittests for test_runner.TestRunner" />
         <item itemvalue="Python tests.Unittests in test_runner.py" />
+        <item itemvalue="Python tests.Unittests for test_runner.TestRunner.test_on_boarding_flow" />
         <item itemvalue="Python.signup" />
         <item itemvalue="Python.custom_config" />
       </list>
@@ -167,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1568361695028</updated>
       <workItem from="1568361698955" duration="133000" />
-      <workItem from="1568361843694" duration="35899000" />
+      <workItem from="1568361843694" duration="39522000" />
     </task>
     <servers />
   </component>
@@ -186,13 +182,13 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/onboarding_test$account_kit.coverage" NAME="account_kit Coverage Results" MODIFIED="1568689160328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
-    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_in_test_runner_py.coverage" NAME="Unittests in test_runner.py Coverage Results" MODIFIED="1568695609470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
+    <SUITE FILE_PATH="coverage/onboarding_test$account_kit.coverage" NAME="account_kit Coverage Results" MODIFIED="1568701867685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
+    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_in_test_runner_py.coverage" NAME="Unittests in test_runner.py Coverage Results" MODIFIED="1568704130558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
     <SUITE FILE_PATH="coverage/onboarding_test$question_pool.coverage" NAME="question-pool Coverage Results" MODIFIED="1568627709377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
-    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner.coverage" NAME="Unittests for test_runner.TestRunner Coverage Results" MODIFIED="1568695613454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner.coverage" NAME="Unittests for test_runner.TestRunner Coverage Results" MODIFIED="1568704135624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/onboarding_test$custom_config.coverage" NAME="custom_config Coverage Results" MODIFIED="1568629645466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/onboarding_test$signup.coverage" NAME="signup Coverage Results" MODIFIED="1568692142528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
     <SUITE FILE_PATH="coverage/onboarding_test$config.coverage" NAME="config Coverage Results" MODIFIED="1568608608023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
-    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner_test_on_boarding_flow.coverage" NAME="Unittests for test_runner.TestRunner.test_on_boarding_flow Coverage Results" MODIFIED="1568696657312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner_test_on_boarding_flow.coverage" NAME="Unittests for test_runner.TestRunner.test_on_boarding_flow Coverage Results" MODIFIED="1568703365081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
