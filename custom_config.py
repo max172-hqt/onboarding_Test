@@ -1,32 +1,33 @@
 class Config:
 
+    BROWSER = 'FIREFOX'
     BASE_EXPERT_URL = "https://expert-excel.got-it.io"
-    BASE_ADMIN_API_URL = "https://api.got-it.io/admin"
+    BASE_ADMIN_API_URL = "https://api.got-it.io"
     GMAIL_SMTP_SERVER = "imap.gmail.com"
     TEST_GOOGLE_EMAIL = "testautomation.gotitpro@gmail.com"
     TEST_GOOGLE_PASSWORD = "#Test@automation123456"
     NUM_MINI_POLICY_TESTS = 4
 
-    MOCK_POLICY_TAXONOMY = {
+    MOCK_POLICY_TAXONOMY = [{
         "difficulty": "easy",
         "number_of_questions": 2,
         "problem_type": "concept",
         "taxonomy": "Max_Policy_1"
-    }
+    }]
 
-    MOCK_POLICY_TAXONOMY_2 = {
+    MOCK_POLICY_TAXONOMY_2 = [{
         "difficulty": "easy",
         "number_of_questions": 2,
         "problem_type": "concept",
         "taxonomy": "V1.Got It Company Overview"
-    }
+    }]
 
-    MOCK_SUBJECT_TAXONOMY = {
+    MOCK_SUBJECT_TAXONOMY = [{
         "difficulty": "easy",
         "number_of_questions": 4,
         "problem_type": "concept",
         "taxonomy": "Max_Excel"
-    }
+    }]
 
     @staticmethod
     def get_auth_token():

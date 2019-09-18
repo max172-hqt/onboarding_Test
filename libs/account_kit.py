@@ -1,6 +1,7 @@
 import html
 import re
 from selenium import webdriver
+import threading
 
 from selenium.webdriver.common.by import By
 
@@ -10,6 +11,7 @@ from selenium.webdriver.common.by import By
 from custom_config import Config
 from libs.gmail import GmailService
 
+# result_available = threading.Event()
 
 def _login_with_selenium(url):
     """
@@ -58,6 +60,19 @@ def run():
         mails = gmail_service.get_latest_unread_emails(sender="Account Kit")
         for mail in mails:
             _login_account_kit(mail)
+
+
+def background_run():
+    gmail_service = GmailService(Config.TEST_GOOGLE_EMAIL, Config.TEST_GOOGLE_PASSWORD)
+
+    while True:
+        mails = gmail_service.get_latest_unread_emails(sender="Account Kit")
+
+        if mails:
+            for mail in mails:
+                _login_account_kit(mail)
+            # result_available.set()
+            break
 
 
 if __name__ == '__main__':

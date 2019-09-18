@@ -3,13 +3,21 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utilities.driver_wrapper import DriverWrapper
+from utilities.custom_wait import text_to_change
 from custom_config import Config
 
 
 class OnboardingStep:
 
+    term_and_condition_next_btn_locator = By.CSS_SELECTOR, "button[type='submit']"
+    onboarding_start_btn_locator = By.CSS_SELECTOR, ".expert-onboarding .btn-onboarding"
+    retry_btn_locator = By.CSS_SELECTOR, ".btn-danger.btn-onboarding"
+    continue_video_btn_locator = By.CSS_SELECTOR, ".expert-onboarding-background-video + .btn"
+
     def __init__(self, driver: WebDriver):
         self.driver = driver
+        self.dw = DriverWrapper(self.driver)
 
     def on_boarding_flow(self):
         """
@@ -20,18 +28,18 @@ class OnboardingStep:
         driver = self.driver
 
         try:
-            next_btn_terms_conditions = WebDriverWait(driver, 50).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))
+            next_btn_terms_conditions = self.dw.wait_element_to_be_clickable(
+                self.term_and_condition_next_btn_locator
             )
 
             next_btn_terms_conditions.click()
 
-            start_btn_onboarding = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".expert-onboarding .btn-onboarding"))
-
+            start_btn_onboarding = self.dw.wait_element_to_be_present(
+                self.onboarding_start_btn_locator
             )
 
             start_btn_onboarding.click()
+
             self._answer_policy_tests()
             self._excel_test_failed_attempt()
             self._excel_test_passed_attempt()
@@ -54,7 +62,7 @@ class OnboardingStep:
         Wait for Continue button to be clickable
         """
         continue_video_btn = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, ".expert-onboarding-background-video + .btn"))
+            EC.element_to_be_clickable(self.continue_video_btn_locator)
         )
 
         continue_video_btn.click()
@@ -83,7 +91,7 @@ class OnboardingStep:
         driver = self.driver
 
         retry_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-danger.btn-onboarding"))
+            EC.element_to_be_clickable(self.retry_btn_locator)
         )
         retry_button.click()
         self._answer_questions()
@@ -113,11 +121,14 @@ class OnboardingStep:
             first_answer = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, by_answer_css))
             )
+
+            # first_answer = self.driver.find_element_by_css_selector(by_answer_css)
             first_answer.click()
 
             continue_btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, "//button[text()='CONTINUE']"))
             )
+            # continue_btn = self.driver.find_element_by_xpath("//button[text()='CONTINUE']")
             continue_btn.click()
 
         if answer_correct:

@@ -1,60 +1,58 @@
-import requests
 from custom_config import Config
 import json
+from utilities.requests_wrapper import AdminRequest
 
 
 class QuestionPool:
 
-    """
-        This class will set up precondition for the test
-        Given 2 mock pools, for Policy tests and Subject test
-
-        Policy test: Max_Policy_1
-        Subject test: Max_Excel
-
-        For each test
-        -   Delete current pool
-        -   Assign mock pool to the only pool
-        -   TODO: Set first answer to be correct, others to be wrong
-    """
-
-    headers = {
-        'Authorization': Config.get_auth_token(),
-        'X-GotIt-Vertical': 'Excel',
-        # 'Content-Type': 'application/json'
-    }
-
     def __init__(self):
-        self.requests = requests
+        self.new_policy_pool = Config.MOCK_POLICY_TAXONOMY
+        self.new_subject_pool = Config.MOCK_SUBJECT_TAXONOMY
+        self.old_pools = {}
 
-    def get_test_by_name(self, test_name):
-        payload = {'funnel': 'A'}
-        url = Config.BASE_ADMIN_API_URL + "/onboarding-tests"
-        response = self.requests.get(url, headers=self.headers, params=payload)
+    @staticmethod
+    def _get_all_tests():
+        """
+        :return: json response of all tests
+        """
+        get_all_tests_req = AdminRequest()
+        get_all_tests_req.set_path("admin/onboarding-tests")
+        get_all_tests_req.params = {'funnel': 'A'}
 
-        if response.status_code == 200:
-            json_response = response.json()['data']
-            matches = [test for test in json_response if test_name in test['name']]
-            return matches[0] if len(matches) == 1 else None
+        return get_all_tests_req.http_get()['data']
 
-    def get_all_tests_name(self):
+    @staticmethod
+    def _get_test_by_name(test_name):
+        """
+        Get json response of test based on test name
+        :param test_name: Test name
+        :return: Test json response
+        """
+        tests = QuestionPool._get_all_tests()
+        matches = [test for test in tests if test_name in test['name']]
+        return matches[0] if len(matches) == 1 else None
+
+    @staticmethod
+    def _get_all_tests_name():
         """
         :return: List of tests on Funnel A
         """
-        payload = {'funnel': 'A'}
-        url = Config.BASE_ADMIN_API_URL + "/onboarding-tests"
-        response = self.requests.get(url, headers=self.headers, params=payload)
+        tests = QuestionPool._get_all_tests()
+        matches = [test['name'] for test in tests]
+        return matches
 
-        if response.status_code == 200:
-            json_response = response.json()['data']
-            matches = [test['name'] for test in json_response]
-            return matches
+    @staticmethod
+    def _get_test_by_id(test_id):
+        get_test_by_id_req = AdminRequest()
+        get_test_by_id_req.set_path(f"admin/onboarding-tests/{test_id}")
+        url = get_test_by_id_req.url
+        return url, get_test_by_id_req.http_get()['data']
 
     def update_all_tests(self):
-        list_test_name = self.get_all_tests_name()
+        list_test_name = QuestionPool._get_all_tests_name()
 
         for test_name in list_test_name:
-            test = self.get_test_by_name(test_name)
+            test = QuestionPool._get_test_by_name(test_name)
             self._update_test(test)
 
     def _update_test(self, test):
@@ -68,38 +66,54 @@ class QuestionPool:
         if 'id' not in test or 'VBA' in test['name']:
             return
 
-        url = Config.BASE_ADMIN_API_URL + "/onboarding-tests/" + str(test['id'])
-        print(url)
-        get_test_response = self.requests.get(url, headers=self.headers)
+        url, test_response = QuestionPool._get_test_by_id(test['id'])
 
-        if get_test_response.status_code != 200:
-            return
+        self.old_pools.update({test['name']: test_response['pools']})
 
-        test_response = get_test_response.json()['data']
-
-        # Build payload
         if "Policy" in test['name']:
-            test_response['pools'] = [Config.MOCK_POLICY_TAXONOMY]
+            test_response = self._build_req_payload(test_response, self.new_policy_pool)
         else:
-            test_response['pools'] = [Config.MOCK_SUBJECT_TAXONOMY]
+            test_response = self._build_req_payload(test_response, self.new_subject_pool)
 
+        update_test_req = AdminRequest()
+        update_test_req.url = url
+        update_test_req.add_headers({'Content-Type': 'application/json'})
+        print(update_test_req.headers)
+        update_test_req.payload = test_response
+        response = update_test_req.http_put()
+        print('response' + str(response))
+
+    @staticmethod
+    def _build_req_payload(test_response, pools):
+        test_response['pools'] = pools
         test_response.pop('name')
         test_response.pop('status')
         test_response.pop('subject_id')
-        test_response = json.dumps(test_response)
 
-        print(test_response)
+        return json.dumps(test_response)
 
-        custom_headers = self.headers.copy()
-        custom_headers['Content-Type'] = 'application/json'
+    def reset_all_tests(self):
+        list_test_name = QuestionPool._get_all_tests_name()
 
-        update_test_response = self.requests.put(url, headers=custom_headers, data=test_response)
-        print(update_test_response.status_code)
+        for test_name in list_test_name:
+            test = QuestionPool._get_test_by_name(test_name)
+            self._reset_test(test)
 
-        if update_test_response.status_code == 200:
-            print('response' + str(update_test_response.json()))
+    def _reset_test(self, test):
+        if 'id' not in test or 'VBA' in test['name']:
+            return
+
+        url, test_response = QuestionPool._get_test_by_id(test['id'])
+        original_pools = self.old_pools[test['name']]
+        test_response = self._build_req_payload(test_response, original_pools)
+
+        update_test_req = AdminRequest()
+        update_test_req.url = url
+        update_test_req.add_headers({'Content-Type': 'application/json'})
+        update_test_req.payload = test_response
+
+        response = update_test_req.http_put()
+        print('response' + str(response))
 
 
-if __name__ == '__main__':
-    q = QuestionPool()
-    q.update_all_tests()
+
