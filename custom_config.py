@@ -1,8 +1,8 @@
 class Config:
 
     BROWSER = 'FIREFOX'
-    BASE_EXPERT_URL = "https://expert-excel.got-it.io"
-    BASE_ADMIN_API_URL = "https://api.got-it.io"
+    BASE_EXPERT_URL = "https://expert-excel.got-it.tech"
+    BASE_ADMIN_API_URL = "https://api.got-it.tech"
     GMAIL_SMTP_SERVER = "imap.gmail.com"
     TEST_GOOGLE_EMAIL = "testautomation.gotitpro@gmail.com"
     TEST_GOOGLE_PASSWORD = "#Test@automation123456"

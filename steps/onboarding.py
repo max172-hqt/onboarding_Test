@@ -14,6 +14,10 @@ class OnboardingStep:
     onboarding_start_btn_locator = By.CSS_SELECTOR, ".expert-onboarding .btn-onboarding"
     retry_btn_locator = By.CSS_SELECTOR, ".btn-danger.btn-onboarding"
     continue_video_btn_locator = By.CSS_SELECTOR, ".expert-onboarding-background-video + .btn"
+    start_excel_btn_locator = By.XPATH, "//h3[text()='Excel']/parent::div//a"
+    progress_text_locator = By.CSS_SELECTOR, "#onboarding-test-question-progress span"
+    continue_test_btn_locator = By.XPATH, "//button[text()='CONTINUE']"
+    continue_pass_btn_locator = By.CSS_SELECTOR, "#onboarding-test-passed-screen button"
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
@@ -77,7 +81,7 @@ class OnboardingStep:
         driver = self.driver
 
         start_excel_btn = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, "//h3[text()='Excel']/parent::div//a"))
+            EC.element_to_be_clickable(self.start_excel_btn_locator)
         )
 
         start_excel_btn.click()
@@ -105,13 +109,14 @@ class OnboardingStep:
         """
         driver = self.driver
 
+        # TODO: Get all elements in the lists
         if answer_correct:
             by_answer_css = ".expert-onboarding-answers li:first-child input"
         else:
             by_answer_css = ".expert-onboarding-answers li:nth-child(2) input"
 
         progress_text = WebDriverWait(driver, 10).until(
-            EC.visibility_of_element_located((By.CSS_SELECTOR, "#onboarding-test-question-progress span"))
+            EC.visibility_of_element_located(self.progress_text_locator)
         )
 
         # format: '1 of 2'
@@ -121,19 +126,21 @@ class OnboardingStep:
             first_answer = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, by_answer_css))
             )
+            # TODO: text_to_be_present_in_element
 
             # first_answer = self.driver.find_element_by_css_selector(by_answer_css)
+
             first_answer.click()
 
             continue_btn = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[text()='CONTINUE']"))
+                EC.element_to_be_clickable(self.continue_test_btn_locator)
             )
             # continue_btn = self.driver.find_element_by_xpath("//button[text()='CONTINUE']")
             continue_btn.click()
 
         if answer_correct:
             continue_pass_btn = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "#onboarding-test-passed-screen button"))
+                EC.element_to_be_clickable(self.continue_pass_btn_locator)
             )
             continue_pass_btn.click()
 

@@ -45,12 +45,13 @@ class SignupStep:
         driver = self.driver
 
         try:
-            WebDriverWait(driver, 10).until(
-                EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//body[@class='landing-expert']/div/iframe[1]"))
-            )
+            self.dw.wait_iframe_available_and_switch_to_it(self.account_kit_iframe_locator)
+            # WebDriverWait(driver, 10).until(
+            #     EC.frame_to_be_available_and_switch_to_it(self.account_kit_iframe_locator)
+            # )
 
             next_btn = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))
+                EC.element_to_be_clickable(self.account_kit_next_btn_locator)
             )
 
             next_btn.click()

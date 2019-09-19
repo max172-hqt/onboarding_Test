@@ -5,13 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/custom_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/account_kit.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/account_kit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/libs/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requests-playground.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steps/onboarding.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/onboarding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/question_pool.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/question_pool.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steps/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/signup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +165,7 @@
       <updated>1568361695028</updated>
       <workItem from="1568361698955" duration="133000" />
       <workItem from="1568361843694" duration="68677000" />
-      <workItem from="1568805029805" duration="1269000" />
+      <workItem from="1568805029805" duration="6345000" />
     </task>
     <servers />
   </component>
@@ -194,7 +189,7 @@
     <SUITE FILE_PATH="coverage/onboarding_test$account_kit.coverage" NAME="account_kit Coverage Results" MODIFIED="1568720751790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
     <SUITE FILE_PATH="coverage/onboarding_test$Unittests_in_test_runner_py.coverage" NAME="Unittests in test_runner.py Coverage Results" MODIFIED="1568794429559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
     <SUITE FILE_PATH="coverage/onboarding_test$question_pool.coverage" NAME="question-pool Coverage Results" MODIFIED="1568627709377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
-    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner.coverage" NAME="Unittests for test_runner.TestRunner Coverage Results" MODIFIED="1568806323389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/onboarding_test$Unittests_for_test_runner_TestRunner.coverage" NAME="Unittests for test_runner.TestRunner Coverage Results" MODIFIED="1568811554686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/onboarding_test$custom_config.coverage" NAME="custom_config Coverage Results" MODIFIED="1568629645466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/onboarding_test$signup.coverage" NAME="signup Coverage Results" MODIFIED="1568692142528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
     <SUITE FILE_PATH="coverage/onboarding_test$config.coverage" NAME="config Coverage Results" MODIFIED="1568608608023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/steps" />
