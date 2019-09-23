@@ -1,6 +1,6 @@
 from custom_config import Config
 import json
-from utilities.requests_wrapper import AdminRequest
+from admin_api_request.requests_wrapper import AdminRequest
 
 
 class QuestionPool:

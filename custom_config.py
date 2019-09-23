@@ -1,12 +1,20 @@
+import os
+import time
+from datetime import datetime
+
+
+
 class Config:
 
     BROWSER = 'FIREFOX'
-    BASE_EXPERT_URL = "https://expert-excel.got-it.tech"
-    BASE_ADMIN_API_URL = "https://api.got-it.tech"
+    BASE_EXPERT_URL = "https://expert-excel.got-it.io/"
+    BASE_ADMIN_API_URL = "https://api.got-it.io/"
     GMAIL_SMTP_SERVER = "imap.gmail.com"
     TEST_GOOGLE_EMAIL = "testautomation.gotitpro@gmail.com"
     TEST_GOOGLE_PASSWORD = "#Test@automation123456"
     NUM_MINI_POLICY_TESTS = 4
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    SCREEN_SHOT_DIR = ROOT_DIR + "/screenshots"
 
     MOCK_POLICY_TAXONOMY = [{
         "difficulty": "easy",
@@ -34,3 +42,10 @@ class Config:
         with open("auth-token.txt") as file:
             return file.read()
 
+    @staticmethod
+    def get_current_date_time():
+        return datetime.fromtimestamp(time.time())
+
+
+if __name__ == '__main__':
+    print(Config.get_current_date_time())
