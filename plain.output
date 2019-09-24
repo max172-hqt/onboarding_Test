@@ -1,26 +1,43 @@
 Feature: ExcelChat expert onboarding flow
+  Background: 
 
-  Scenario: User Signup
-    Given I am on "Expert Landing" page ... passed in 5.636s
-    When I sign up ... passed in 1.157s
-    Then I am on "Email Verification" modal ... passed in 5.310s
-    When I verify my email ... passed in 14.114s
-    And I accept Terms and Conditions ... passed in 0.274s
-    Then I am on "Welcome" page ... failed in 0.001s
+  Scenario Outline: User Signup and onboarding -- @1.1 
+    Given I am on Expert Landing page ... passed in 3.949s
+    When I sign up ... passed in 1.161s
+    Then I am on Email Verification modal ... failed in 0.005s
 Traceback (most recent call last):
   File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
     match.run(runner.context)
   File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
     self.func(context, *args, **kwargs)
-  File "features/steps/signup_steps.py", line 47, in step_impl
-    raise NotImplementedError(u'STEP: Then I am on "Welcome" page')
-NotImplementedError: STEP: Then I am on "Welcome" page
+  File "features/steps/onboarding.py", line 32, in step_impl
+    email_verification = EmailVerificationModal(context.driver_wrapper)
+  File "/Users/hqt/dev/onboarding-test/pom/base/base_pom.py", line 14, in __init__
+    assert self.is_displayed()
+  File "/Users/hqt/dev/onboarding-test/pom/sign_up/email_verification_modal.py", line 12, in is_displayed
+    assert self.driver_wrapper.is_iframe_displayed(self.account_kit_next_btn_locator)
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 72, in is_iframe_displayed
+    iframes = self.get_elements(By.TAG_NAME("iframe"))
+TypeError: 'str' object is not callable
 
-Captured stdout:
-https://expert-excel.got-it.io/ https://expert-excel.got-it.io/
-Found an email from accountkit for: 
-https://www.accountkit.com/v1.1/dialog/confirm_email/?app_id=1018803301568549&confirmation_code=e4NZ0PqsdXZGx0JchAUY&email_address=testautomation.gotitpro%2Bexpert_%2B1569206524.714924%40gmail.com&logging_ref=f225631ded6bab2&sdk=web&locale=en_US&login_request_code=031a09fa61e6dace94f848434dd8e16a&fb_app_events_enabled=1&redirect_uri]
 
-  Scenario: Onboarding flow
-    Given I sign up successfully ... undefined in 0.000s
+  Scenario Outline: User Signup and onboarding -- @1.2 
+    Given I am on Expert Landing page ... passed in 3.686s
+    When I sign up ... passed in 1.054s
+    Then I am on Email Verification modal ... failed in 0.001s
+Traceback (most recent call last):
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features/steps/onboarding.py", line 32, in step_impl
+    email_verification = EmailVerificationModal(context.driver_wrapper)
+  File "/Users/hqt/dev/onboarding-test/pom/base/base_pom.py", line 14, in __init__
+    assert self.is_displayed()
+  File "/Users/hqt/dev/onboarding-test/pom/sign_up/email_verification_modal.py", line 12, in is_displayed
+    assert self.driver_wrapper.is_iframe_displayed(self.account_kit_next_btn_locator)
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 72, in is_iframe_displayed
+    iframes = self.get_elements(By.TAG_NAME("iframe"))
+TypeError: 'str' object is not callable
+
 

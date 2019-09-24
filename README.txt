@@ -12,4 +12,24 @@ GET/PUT https://api.got-it.io/admin/onboarding-questions/:id
 - Get pool property
 - Get id of all questions in the pool
 - Update 1st answer to be right answer and other answers to be wrong
-    
+
+    Structure POM
+        Base
+        Feature for each dir
+
+    Verify email - step DONE
+
+
+    is_displayed DONE
+    init new page for each step DONE
+    rename step file identical to feature file DONE
+
+
+
+
+    Iframe is_displayed DONE
+
+
+    allure behave
+    pass page
+
