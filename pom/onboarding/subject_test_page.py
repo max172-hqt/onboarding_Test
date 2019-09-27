@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 class SubjectTestPage(BasePage):
 
     base_url = "/subjects"
-    start_excel_btn_locator = By.XPATH, "//h3[text()='Excel']/parent::div//a"
     subject_test_buttons_locator = By.CSS_SELECTOR, ".expert-onboarding-subjectbox .btn-onboarding-start"
 
     def start_excel_core(self):

@@ -2,30 +2,42 @@ Feature: ExcelChat expert onboarding flow
   Background: 
 
   Scenario Outline: User Signup and onboarding -- @1.1 
-    Given I am on Expert Landing page ... passed in 3.799s
-    When I sign up ... passed in 1.113s
-    And I am on Email Verification modal ... passed in 8.822s
-    And I verify my email ... passed in 17.085s
-    And I accept Terms and Conditions ... passed in 0.266s
-    Then I should see Welcome page ... passed in 0.550s
-    When I click next ... passed in 0.799s
-    When I "pass" Policy Test ... passed in 17.045s
-    Then I should see Subject Test page ... passed in 0.004s
-    When I start Core Excel Test ... passed in 0.257s
-    And I "pass" Core Excel Test ... passed in 3.222s
-    Then I should see "Success" page ... passed in 1.057s
+    Given I am on Expert Landing page ... passed in 3.428s
+    When I open login modal ... passed in 0.318s
+    And I sign up ... failed in 0.957s
+Traceback (most recent call last):
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features/steps/onboarding.py", line 36, in step_impl
+    context.config.userdata['test_password']
+  File "/Users/hqt/dev/onboarding-test/pom/sign_up/signin_modal.py", line 35, in sign_up
+    self.driver_wrapper.click(self.get_sign_up_button())
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 122, in click
+    el = self.get_element(locator)
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 109, in get_element
+    element = self.driver.find_element(*locator)
+TypeError: find_element() argument after * must be an iterable, not FirefoxWebElement
+
 
   Scenario Outline: User Signup and onboarding -- @1.2 
-    Given I am on Expert Landing page ... passed in 3.628s
-    When I sign up ... passed in 1.023s
-    And I am on Email Verification modal ... passed in 6.476s
-    And I verify my email ... passed in 25.658s
-    And I accept Terms and Conditions ... passed in 0.349s
-    Then I should see Welcome page ... passed in 0.048s
-    When I click next ... passed in 0.852s
-    When I "pass" Policy Test ... passed in 12.278s
-    Then I should see Subject Test page ... passed in 0.511s
-    When I start Core Excel Test ... passed in 0.772s
-    And I "fail" Core Excel Test ... passed in 5.785s
-    Then I should see "Failed" page ... passed in 6.647s
+    Given I am on Expert Landing page ... passed in 2.813s
+    When I open login modal ... passed in 0.371s
+    And I sign up ... failed in 0.951s
+Traceback (most recent call last):
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
+    match.run(runner.context)
+  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features/steps/onboarding.py", line 36, in step_impl
+    context.config.userdata['test_password']
+  File "/Users/hqt/dev/onboarding-test/pom/sign_up/signin_modal.py", line 35, in sign_up
+    self.driver_wrapper.click(self.get_sign_up_button())
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 122, in click
+    el = self.get_element(locator)
+  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 109, in get_element
+    element = self.driver.find_element(*locator)
+TypeError: find_element() argument after * must be an iterable, not FirefoxWebElement
+
 
