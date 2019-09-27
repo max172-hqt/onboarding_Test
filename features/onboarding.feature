@@ -7,12 +7,13 @@ Feature: ExcelChat expert onboarding flow
   """
   Background:
     Given I am on Expert Landing page
-    When I sign up
-    And I am on Email Verification modal
+    When I open login modal
+    And I sign up
+    And I click send Email verification
     And I verify my email
     And I accept Terms and Conditions
     Then I should see Welcome page
-    When I click next
+    When I start Onboarding test
 
   @fixture.setup.browser
   @fixture.setup.email

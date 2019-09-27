@@ -19,6 +19,11 @@ from pom.sign_up.term_and_condition_modal import TermAndConditionModal
 @given('I am on Expert Landing page')
 def step_impl(context):
     context.driver_wrapper.open(Config.BASE_EXPERT_URL)
+    LandingPage(context.driver_wrapper)
+
+
+@when("I open login modal")
+def step_impl(context):
     landing_page = LandingPage(context.driver_wrapper)
     landing_page.open_login_modal()
 
@@ -32,7 +37,7 @@ def step_impl(context):
     )
 
 
-@when('I am on Email Verification modal')
+@when('I click send Email verification')
 def step_impl(context):
     email_verification = EmailVerificationModal(context.driver_wrapper)
     email_verification.send_email_verification()
@@ -55,7 +60,7 @@ def step_impl(context):
     assert welcome_page.is_displayed()
 
 
-@when('I click next')
+@when('I start Onboarding test')
 def step_impl(context):
     welcome_page = WelcomePage(context.driver_wrapper)
     welcome_page.start_onboarding_test()
@@ -86,12 +91,6 @@ def step_impl(context):
     subject_test_page.start_excel_core()
 
 
-@when('I start Excel Core Test')
-def step_impl(context):
-    subject_test_page = SubjectTestPage(context.driver_wrapper)
-    subject_test_page.start_excel_core()
-
-
 @when('I "{action}" Core Excel Test')
 def step_impl(context, action):
     question_page = QuestionPage(context.driver_wrapper)
@@ -114,6 +113,4 @@ def step_impl(context, result):
         assert fail_page.is_displayed()
     else:
         assert False, "Page name is invalid"
-
-
 
