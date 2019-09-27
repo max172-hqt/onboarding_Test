@@ -1,1 +1,7 @@
 auth-token.txt
+allure_test_result/
+.idea/
+*.pc
+*.pyc
+*.pyo
+__pycache__

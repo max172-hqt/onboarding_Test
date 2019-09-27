@@ -32,7 +32,7 @@ def step_impl(context):
     )
 
 
-@then('I am on Email Verification modal')
+@when('I am on Email Verification modal')
 def step_impl(context):
     email_verification = EmailVerificationModal(context.driver_wrapper)
     email_verification.send_email_verification()
@@ -49,7 +49,13 @@ def step_impl(context):
     term_and_condition.click_next()
 
 
-@then('I am on Welcome page')
+@then('I should see Welcome page')
+def step_impl(context):
+    welcome_page = WelcomePage(context.driver_wrapper)
+    assert welcome_page.is_displayed()
+
+
+@when('I click next')
 def step_impl(context):
     welcome_page = WelcomePage(context.driver_wrapper)
     welcome_page.start_onboarding_test()
@@ -57,22 +63,30 @@ def step_impl(context):
 
 @when('I "pass" Policy Test')
 def step_impl(context):
-    video_page = VideoPage(context.driver_wrapper, check_is_displayed=False)
-    question_page = QuestionPage(context.driver_wrapper, check_is_displayed=False)
-    pass_page = PassTestPage(context.driver_wrapper, check_is_displayed=False)
-
     for i in range(Config.NUM_MINI_POLICY_TESTS):
-        video_page.is_displayed()
+        video_page = VideoPage(context.driver_wrapper)
         video_page.watch_video()
 
-        question_page.is_displayed()
+        question_page = QuestionPage(context.driver_wrapper)
         question_page.answer_test()
 
-        pass_page.is_displayed()
+        pass_page = PassTestPage(context.driver_wrapper)
         pass_page.click_continue()
 
 
-@then('I am on Subject Test page')
+@then('I should see Subject Test page')
+def step_impl(context):
+    subject_test_page = SubjectTestPage(context.driver_wrapper)
+    assert subject_test_page.is_displayed()
+
+
+@when(u'I start Core Excel Test')
+def step_impl(context):
+    subject_test_page = SubjectTestPage(context.driver_wrapper)
+    subject_test_page.start_excel_core()
+
+
+@when('I start Excel Core Test')
 def step_impl(context):
     subject_test_page = SubjectTestPage(context.driver_wrapper)
     subject_test_page.start_excel_core()
@@ -80,22 +94,26 @@ def step_impl(context):
 
 @when('I "{action}" Core Excel Test')
 def step_impl(context, action):
-    question_page = QuestionPage(context.driver_wrapper, check_is_displayed=False)
+    question_page = QuestionPage(context.driver_wrapper)
 
     if action == 'pass':
         question_page.answer_test(answer_correct=True)
-    else:
+    elif action == 'fail':
         question_page.answer_test(answer_correct=False)
-
-
-@then('I am on "{result}" page')
-def step_impl(context, result):
-    pass_page = PassTestPage(context.driver_wrapper, check_is_displayed=False)
-    fail_page = FailTestPage(context.driver_wrapper, check_is_displayed=False)
-
-    if result == 'Success':
-        pass_page.is_displayed()
     else:
-        fail_page.is_displayed()
+        assert False, "Action not valid"
+
+
+@then('I should see "{result}" page')
+def step_impl(context, result):
+    if result == 'Success':
+        pass_page = PassTestPage(context.driver_wrapper)
+        assert pass_page.is_displayed()
+    elif result == 'Failed':
+        fail_page = FailTestPage(context.driver_wrapper)
+        assert fail_page.is_displayed()
+    else:
+        assert False, "Page name is invalid"
+
 
 

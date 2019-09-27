@@ -11,8 +11,8 @@ class SigninComponent(BaseModal):
     confirm_password = By.CSS_SELECTOR, ".signup-form input[name='confirmPassword']"
     signup_btn = By.XPATH, "//button[contains(text(), 'SIGN UP')]"
 
-    def __init__(self, driver_wrapper):
-        super().__init__(driver_wrapper, self.container)
+    # def __init__(self, driver_wrapper):
+    #     super().__init__(driver_wrapper, self.container)
 
     def sign_up(self, email_text, password_text):
         """

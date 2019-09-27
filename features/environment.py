@@ -1,12 +1,13 @@
 from behave.fixture import use_fixture_by_tag, use_fixture
-from features.fixtures import browser_setup, testing_email_setup, question_pools_setup
+from features.fixtures import browser_setup, testing_email_setup, question_pools_setup, clean_screenshot_dir
 from custom_config import Config
 
 
 fixture_registry = {
     "fixture.setup.browser": browser_setup,
     "fixture.setup.email": testing_email_setup,
-    "fixture.setup.question_pool": question_pools_setup
+    "fixture.setup.question_pool": question_pools_setup,
+    "fixture.clean.screenshot_dir": clean_screenshot_dir
 }
 
 

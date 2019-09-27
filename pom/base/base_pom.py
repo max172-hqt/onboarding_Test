@@ -3,14 +3,14 @@ from manager.driver_wrapper import DriverWrapper
 
 
 class BasePOM(ABC):
-    def __init__(self, driver_wrapper, check_is_displayed=True):
+    def __init__(self, driver_wrapper, is_displayed=True):
         """
         :type driver_wrapper: DriverWrapper
         """
         self.driver_wrapper = driver_wrapper
         super().__init__()
 
-        if check_is_displayed:
+        if is_displayed:
             assert self.is_displayed()
 
     @abstractmethod

@@ -6,12 +6,15 @@ class SubjectTestPage(BasePage):
 
     base_url = "/subjects"
     start_excel_btn_locator = By.XPATH, "//h3[text()='Excel']/parent::div//a"
-
-    def __init__(self, driver_wrapper):
-        super().__init__(driver_wrapper, self.base_url)
+    subject_test_buttons_locator = By.CSS_SELECTOR, ".expert-onboarding-subjectbox .btn-onboarding-start"
 
     def start_excel_core(self):
-        start_btn = self.driver_wrapper.wait_element_to_be_clickable(
-            self.start_excel_btn_locator
+        start_btn_list = self.get_subject_test_buttons()
+        if len(start_btn_list) > 0:
+            excel_start_btn = start_btn_list[0]
+            excel_start_btn.click()
+
+    def get_subject_test_buttons(self):
+        return self.driver_wrapper.wait_elements_to_be_visible(
+            self.subject_test_buttons_locator
         )
-        start_btn.click()

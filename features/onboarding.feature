@@ -1,3 +1,4 @@
+@fixture.clean.screenshot_dir
 @fixture.setup.question_pool
 Feature: ExcelChat expert onboarding flow
   """
@@ -7,18 +8,20 @@ Feature: ExcelChat expert onboarding flow
   Background:
     Given I am on Expert Landing page
     When I sign up
-    Then I am on Email Verification modal
-    When I verify my email
+    And I am on Email Verification modal
+    And I verify my email
     And I accept Terms and Conditions
-    Then I am on Welcome page
+    Then I should see Welcome page
+    When I click next
 
   @fixture.setup.browser
   @fixture.setup.email
   Scenario Outline: User Signup and onboarding
     When I "pass" Policy Test
-    Then I am on Subject Test page
-    When I "<action>" Core Excel Test
-    Then I am on "<result>" page
+    Then I should see Subject Test page
+    When I start Core Excel Test
+    And I "<action>" Core Excel Test
+    Then I should see "<result>" page
 
     Examples:
       | action | result   |

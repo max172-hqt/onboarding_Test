@@ -15,21 +15,21 @@ GET/PUT https://api.got-it.io/admin/onboarding-questions/:id
 
     Structure POM
         Base
-        Feature for each dir
+        Feature for each dir DONE
 
     Verify email - step DONE
-
-
     is_displayed DONE
     init new page for each step DONE
     rename step file identical to feature file DONE
-
-
-
+    pass page DONE
 
     Iframe is_displayed DONE
 
 
-    allure behave
-    pass page
+    feature file naming
 
+    allure behave
+    clearn screenshot dir
+    
+    fix random fail when answering questions
+    

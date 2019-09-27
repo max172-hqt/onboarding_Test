@@ -2,42 +2,30 @@ Feature: ExcelChat expert onboarding flow
   Background: 
 
   Scenario Outline: User Signup and onboarding -- @1.1 
-    Given I am on Expert Landing page ... passed in 3.949s
-    When I sign up ... passed in 1.161s
-    Then I am on Email Verification modal ... failed in 0.005s
-Traceback (most recent call last):
-  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "features/steps/onboarding.py", line 32, in step_impl
-    email_verification = EmailVerificationModal(context.driver_wrapper)
-  File "/Users/hqt/dev/onboarding-test/pom/base/base_pom.py", line 14, in __init__
-    assert self.is_displayed()
-  File "/Users/hqt/dev/onboarding-test/pom/sign_up/email_verification_modal.py", line 12, in is_displayed
-    assert self.driver_wrapper.is_iframe_displayed(self.account_kit_next_btn_locator)
-  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 72, in is_iframe_displayed
-    iframes = self.get_elements(By.TAG_NAME("iframe"))
-TypeError: 'str' object is not callable
-
+    Given I am on Expert Landing page ... passed in 3.799s
+    When I sign up ... passed in 1.113s
+    And I am on Email Verification modal ... passed in 8.822s
+    And I verify my email ... passed in 17.085s
+    And I accept Terms and Conditions ... passed in 0.266s
+    Then I should see Welcome page ... passed in 0.550s
+    When I click next ... passed in 0.799s
+    When I "pass" Policy Test ... passed in 17.045s
+    Then I should see Subject Test page ... passed in 0.004s
+    When I start Core Excel Test ... passed in 0.257s
+    And I "pass" Core Excel Test ... passed in 3.222s
+    Then I should see "Success" page ... passed in 1.057s
 
   Scenario Outline: User Signup and onboarding -- @1.2 
-    Given I am on Expert Landing page ... passed in 3.686s
-    When I sign up ... passed in 1.054s
-    Then I am on Email Verification modal ... failed in 0.001s
-Traceback (most recent call last):
-  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/model.py", line 1329, in run
-    match.run(runner.context)
-  File "/Users/hqt/.virtualenvs/onboarding-test/lib/python3.7/site-packages/behave/matchers.py", line 98, in run
-    self.func(context, *args, **kwargs)
-  File "features/steps/onboarding.py", line 32, in step_impl
-    email_verification = EmailVerificationModal(context.driver_wrapper)
-  File "/Users/hqt/dev/onboarding-test/pom/base/base_pom.py", line 14, in __init__
-    assert self.is_displayed()
-  File "/Users/hqt/dev/onboarding-test/pom/sign_up/email_verification_modal.py", line 12, in is_displayed
-    assert self.driver_wrapper.is_iframe_displayed(self.account_kit_next_btn_locator)
-  File "/Users/hqt/dev/onboarding-test/manager/driver_wrapper.py", line 72, in is_iframe_displayed
-    iframes = self.get_elements(By.TAG_NAME("iframe"))
-TypeError: 'str' object is not callable
-
+    Given I am on Expert Landing page ... passed in 3.628s
+    When I sign up ... passed in 1.023s
+    And I am on Email Verification modal ... passed in 6.476s
+    And I verify my email ... passed in 25.658s
+    And I accept Terms and Conditions ... passed in 0.349s
+    Then I should see Welcome page ... passed in 0.048s
+    When I click next ... passed in 0.852s
+    When I "pass" Policy Test ... passed in 12.278s
+    Then I should see Subject Test page ... passed in 0.511s
+    When I start Core Excel Test ... passed in 0.772s
+    And I "fail" Core Excel Test ... passed in 5.785s
+    Then I should see "Failed" page ... passed in 6.647s
 

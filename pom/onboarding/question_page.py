@@ -7,7 +7,7 @@ class QuestionPage(OnboardingPage):
     container = By.CSS_SELECTOR, "#onboarding-test-answer-screen"
     answers_radio_locator = By.CSS_SELECTOR, ".expert-onboarding-answers li input"
     progress_text_locator = By.CSS_SELECTOR, "#onboarding-test-question-progress span"
-    continue_test_btn_locator = By.XPATH, "//button[text()='CONTINUE']"
+    continue_test_btn_locator = By.CSS_SELECTOR, "#onboarding-test-question-progress + div > button"
 
     def is_displayed(self):
         return (super().is_displayed()

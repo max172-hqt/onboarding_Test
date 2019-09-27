@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
 from custom_config import Config
 import os
 
@@ -78,18 +77,18 @@ class DriverWrapper:
     # def is_iframe_displayed(self, child_locator, time=default_wait_time):
     #     result = False
     #     iframes = self.get_elements((By.TAG_NAME, "iframe"))
-    #
+    
     #     if len(iframes) > 0:
-    #         for iframe in iframes:
+    #         for i in range(len(iframes)):
     #             try:
-    #                 self.driver.switch_to.frame(iframe)
+    #                 self.driver.switch_to.frame(i)
     #                 self.wait_element_to_be_present(child_locator, time)
     #                 self.driver.switch_to.default_content()
     #                 result = True
     #                 break
     #             except TimeoutException:
     #                 print("Loading took too much time!")
-    #
+    
     #     return result
 
     def is_iframe_displayed(self, locator, time=default_wait_time):
@@ -131,6 +130,7 @@ class DriverWrapper:
             Config.SCREEN_SHOT_DIR,
             "{} {} {}.png".format(timestamp, scenario, step)
         )
+
         result = self.driver.save_screenshot(screenshot_name)
 
         if result:
